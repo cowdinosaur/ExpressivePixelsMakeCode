@@ -79,6 +79,9 @@ namespace EPXDisplay {
                             paletteIdx = anim[framesOffset + frameByteOffset];
                             frameByteOffset++;
                             if(paletteIdx < PaletteLength) {
+                                if (pixelPos % 16 > 7) {
+                                    pixelPos = Math.floor(pixelPos / 16) * 16 + (16 - pixelPos % 16)
+                                }
                                 strip.setPixelColor(pixelPos, palette[paletteIdx]);
                             }
                         }
@@ -106,6 +109,10 @@ namespace EPXDisplay {
                             paletteIdx = anim[framesOffset + frameByteOffset];
                             frameByteOffset++;
                             if(paletteIdx < PaletteLength) {
+                                if (logicalPixelPosition % 16 > 7) {
+                                    logicalPixelPosition = Math.floor(logicalPixelPosition / 16) * 16 + (16 - logicalPixelPosition % 16)
+                                }
+
                                 strip.setPixelColor(logicalPixelPosition, palette[paletteIdx]);
                             }
                         }
